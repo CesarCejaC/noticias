@@ -1,17 +1,37 @@
-<ion-header [translucent]="true">
+<ion-header [translucent]="true" mode="ios" class="ion-no-border">
   <ion-toolbar>
     <ion-title>
-      Tab 1
+      Noticias
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+  <ion-header collapse="condense"  mode="ios" class="ion-no-border">
     <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
+      <ion-title size="large">Noticias</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <ion-grid>
+    <ion-row>
+      <ion-col *ngFor="let articulos of articulos; let i=index">
+        <ion-card-subtitle>
+          <span class="text-prymary">{{i}}</span>
+          <span class="articulo-source-name">{{articulos.source.name}}</span>
+        </ion-card-subtitle>
+
+        <ion-card-title class="ion-padding-horizontal ion-margin-bottom">
+          {{articulos.title}}
+        </ion-card-title>  
+        
+        <img *ngIf="articulos.urlToImage" [src]="articulos.urlToImage"/>
+        
+        <ion-card-content>
+          <p>{{articulos.content}}</p>
+        </ion-card-content>
+        
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
